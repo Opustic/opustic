@@ -1,2 +1,54 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme {
+    /* --- POLICES D'ÉCRITURE --- */
+    /* Une sans-serif géométrique et ultra-propre pour l'aspect technique/luxe */
+    --font-sans: "Inter", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    /* Une police à chasse fixe (monospace) élégante pour les détails, métadonnées ou petits éléments */
+    --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+    /* --- PALETTE DE COULEURS --- */
+    /* Ton noir profond (un poil adouci pour ne pas fatiguer les yeux en mode sombre) */
+    --color-brand-dark: #0d0d0d;
+    --color-brand-dark-soft: #161616;
+    
+    /* Ton blanc pur et blanc cassé pour les contrastes */
+    --color-brand-light: #ffffff;
+    --color-brand-light-soft: #f4f4f5;
+
+    /* Ton orange signature (dynamique, précis, style aiguille de chronographe) */
+    --color-brand-orange: #ff6600;
+    --color-brand-orange-hover: #e05a00;
+    --color-brand-orange-glow: rgba(255, 102, 0, 0.15);
+}
+
+/* --- PERSONNALISATION DES ÉLÉMENTS GLOBAUX --- */
+@layer base {
+    body {
+        @apply bg-brand-light text-brand-dark font-sans antialiased selection:bg-brand-orange/30 transition-colors duration-300;
+    }
+
+    /* Version Sombre par défaut si l'utilisateur le souhaite, ou selon tes préférences */
+    .dark body {
+        @apply bg-brand-dark text-brand-light;
+    }
+
+    /* Style des titres pour un effet "luxe / épuré" */
+    h1, h2, h3, h4 {
+        @apply tracking-tight font-semibold text-balance;
+    }
+}
+
+/* --- UTILITIES & EFFETS VITRINE (Style Horlogerie) --- */
+@layer utilities {
+    /* Un effet de bordure fine et discrète typique des tableaux de bord haut de gamme */
+    .border-premium {
+        @apply border border-brand-dark/10 dark:border-brand-light/10;
+    }
+
+    /* L'effet de lueur (glow) orange pour tes boutons ou tes éléments actifs */
+    .glow-orange {
+        box-shadow: 0 0 20px var(--color-brand-orange-glow);
+    }
+}
