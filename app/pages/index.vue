@@ -4,12 +4,12 @@
 
     <LazyAccueilHero />
 
-    <LazyAccueilAbout />
+    <LazyAccueilAbout id="apropos" />
 
-    <LazyAccueilProjets />
+    <LazyAccueilProjets id="projets" />
 
-    <LazyAccueilFaq />
+    <LazyAccueilFaq id="faq" />
 
-    <LazyContact />
+    <LazyContact id="contacts" />
 
 </template>

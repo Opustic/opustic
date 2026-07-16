@@ -86,7 +86,7 @@ function toggle(index: number) {
             :style="{ gridTemplateRows: openIndex === index ? '1fr' : '0fr' }"
           >
             <div class="overflow-hidden">
-              <p class="max-w-2xl pb-6 pl-[3.25rem] font-sans text-sm text-brand-dark/60 dark:text-brand-light/60 sm:text-base">
+              <p class="max-w-2xl pb-6 pl-13 font-sans text-sm text-brand-dark/60 dark:text-brand-light/60 sm:text-base">
                 {{ faq.answer }}
               </p>
             </div>

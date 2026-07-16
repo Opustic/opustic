@@ -28,16 +28,20 @@ const specs = [
       </div>
 
         <!-- Grand titre -->
-        <h1 class="text-5xl leading-[0.95] font-semibold tracking-tight sm:text-7xl lg:text-8xl">
-            <span class="block">Serge GUIMBI</span>
-            <span class="block text-brand-dark/30 dark:text-brand-light/30">
-                Développeur <span class="text-brand-orange">Full-Stack</span>
-            </span>
+        <h1 class="text-4xl leading-[1.05] font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+          <span class="block">Serge GUIMBI</span>
+          <span class="mt-4 block font-mono text-lg font-light uppercase tracking-widest text-brand-dark/40 dark:text-brand-light/40 sm:text-2xl">
+            <span class="text-brand-orange">Data Analyst</span> 
+            <span class="mx-2 sm:mx-3">•</span> 
+            <span class="text-brand-dark dark:text-brand-light">Full-Stack Dev</span> 
+            <span class="mx-2 sm:mx-3">•</span> 
+            <span class="text-brand-orange">Automation Expert</span>
+          </span>
         </h1>
 
         <!-- Description courte -->
-        <p class="mt-8 max-w-xl font-sans text-base text-brand-dark/70 dark:text-brand-light/70 sm:text-lg">
-            Je conçois et développe des applications web sur-mesure, du backend à l'interface, avec une attention particulière portée aux détails.
+        <p class="mt-8 max-w-2xl font-sans text-base text-brand-dark/70 dark:text-brand-light/70 sm:text-lg leading-relaxed">
+          Je construis des ponts entre la donnée et le produit. Spécialisé dans l'analyse de données, le développement d'applications sur-mesure et l'automatisation de workflows, je conçois des systèmes fiables et autonomes de bout en bout.
         </p>
 
         <!-- CTA -->

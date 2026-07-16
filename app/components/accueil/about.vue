@@ -118,7 +118,7 @@ onUnmounted(() => {
 
                 <div class="lg:col-span-4 flex flex-col justify-end">
                     <p class="font-sans text-sm text-brand-dark/60 dark:text-brand-light/60">
-                        Basé à Brazzaville, je développe sous ma propre marque, <strong>Opustic</strong>. J'aide les entreprises et créateurs à automatiser leurs processus et à déployer des plateformes modernes et rapides.
+                        Basé à Brazzaville, je développe sous ma propre marque, <strong class="text-brand-orange">Opustic</strong>. J'aide les entreprises et créateurs à automatiser leurs processus et à déployer des plateformes modernes et rapides.
                     </p>
                 </div>
             </div>

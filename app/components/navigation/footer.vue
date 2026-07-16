@@ -1,16 +1,15 @@
 <script setup lang="ts">
 const navLinks = [
-  { label: 'Home', to: '#' },
-  { label: 'Projects', to: '#projects' },
-  { label: 'About', to: '#about' },
+  { label: 'Accueil', to: '#' },
+  { label: 'Projets', to: '#projets' },
+  { label: 'À propos', to: '#apropos' },
   { label: 'FAQ', to: '#faq' },
-  { label: 'Contact', to: '#contact' }
+  { label: 'Contacts', to: '#contacts' }
 ]
 
 const taglineItems = [
   'Disponible pour de nouveaux projets',
-  'Basé à Pointe-Noire, Congo',
-  'Café requis avant 9h',
+  'Basé à Brazzaville, Congo',
   'Toujours en train de débugger quelque chose'
 ]
 
@@ -64,12 +63,12 @@ function scrollToTop() {
     <div class="relative border-b border-premium">
       <GridBg :cols="20" :rows="6" :step-duration="220" :fade-duration="1400" class="opacity-40" />
 
-      <div class="relative mx-auto max-w-6xl px-6 pt-16">
+      <div class="relative mx-auto max-w-6xl px-6 p-16">
         <NuxtLink
           to="#"
           class="block select-none text-center font-sans text-[18vw] leading-none font-bold tracking-tighter text-transparent transition-colors duration-300 [-webkit-text-stroke:1px_var(--color-brand-dark)] hover:[-webkit-text-stroke:1px_var(--color-brand-orange)] dark:[-webkit-text-stroke:1px_var(--color-brand-light)] sm:text-[14vw]"
         >
-          SERGE
+          OPUSTIC
         </NuxtLink>
       </div>
     </div>
@@ -105,7 +104,7 @@ function scrollToTop() {
             Disponible
           </div>
           <p class="mt-2 font-mono text-sm text-brand-dark/50 dark:text-brand-light/50">
-            {{ localTime }} — Pointe-Noire, CG
+            {{ localTime }} — Brazzaville, CG
           </p>
         </div>
 
@@ -126,8 +125,8 @@ function scrollToTop() {
       </div>
 
       <!-- Ligne du bas -->
-      <div class="mt-16 flex flex-col gap-3 border-t border-premium pt-6 font-mono text-[10px] uppercase tracking-widest text-brand-dark/40 sm:flex-row sm:items-center sm:justify-between dark:text-brand-light/40">
-        <span>© {{ new Date().getFullYear() }} Serge Mabiala — Tous droits réservés</span>
+      <div class="mt-16 flex flex-col gap-3 border-t border-premium p-6 font-mono text-[10px] uppercase tracking-widest text-brand-dark/40 sm:flex-row sm:items-center sm:justify-between dark:text-brand-light/40">
+        <span>© {{ new Date().getFullYear() }} Serge GUIMBI — Tous droits réservés</span>
         <span>Conçu &amp; codé avec Nuxt, Tailwind &amp; beaucoup de café</span>
       </div>
     </div>

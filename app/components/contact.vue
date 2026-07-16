@@ -9,10 +9,10 @@ interface ContactLink {
 }
 
 const links: ContactLink[] = [
-    { label: 'Email', value: 'hello@serge.dev', href: 'mailto:hello@serge.dev', icon: 'i-lucide-mail', copyable: true, highlight: true },
-    { label: 'GitHub', value: '@serge-mabiala', href: 'https://github.com/serge-mabiala', icon: 'i-simple-icons-github' },
-    { label: 'LinkedIn', value: 'Serge Mabiala', href: 'https://linkedin.com/in/serge-mabiala', icon: 'i-simple-icons-linkedin' },
-    { label: 'TikTok', value: '@serge.dev', href: 'https://tiktok.com/@serge.dev', icon: 'i-simple-icons-tiktok' }
+    { label: 'Email', value: 'hello@serge.dev', href: 'mailto:jeansergeguimbi@gmail.com', icon: 'i-lucide-mail', copyable: true, highlight: true },
+    { label: 'GitHub', value: '@Opustic', href: 'https://github.com/Opustic', icon: 'i-simple-icons-github' },
+    { label: 'LinkedIn', value: 'Serge GUIMBI', href: 'https://www.linkedin.com/in/serge-guimbi-6b707a309/', icon: 'i-simple-icons-linkedin' },
+    { label: 'TikTok', value: '@Opustic', href: 'https://tiktok.com/@Opustic', icon: 'i-simple-icons-tiktok' }
 ]
 
 const copiedLabel = ref<string | null>(null)

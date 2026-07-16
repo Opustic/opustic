@@ -34,10 +34,10 @@ watch(isMenuOpen, (open) => {
 });
 
 const navLinks = [
-    { label: "Home", to: "/", index: "01" },
-    { label: "Projects", to: "/#projects", index: "02" },
-    { label: "About", to: "/#about", index: "03" },
-    { label: "Contact", to: "/#contact", index: "04" },
+    { label: "Accueil", to: "/", index: "01" },
+    { label: "Projets", to: "/#projets", index: "02" },
+    { label: "A propos", to: "/#apropos", index: "03" },
+    { label: "Contacts", to: "/#contacts", index: "04" },
 ];
 </script>
 
@@ -64,15 +64,6 @@ const navLinks = [
                     <span class="text-[10px] text-brand-orange">{{ link.index }}</span>
                     {{ link.label }}
                 </NuxtLink>
-
-                <button
-                    type="button"
-                    class="flex items-center gap-3 border border-brand-dark dark:border-brand-light bg-brand-dark dark:bg-brand-light px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-brand-light dark:text-brand-dark transition-colors duration-200 hover:bg-brand-orange hover:border-brand-orange dark:hover:bg-brand-orange dark:hover:text-brand-light"
-                    @click="isMenuOpen = true"
-                >
-                    Contact
-                    <UIcon name="i-lucide-arrow-up-right" class="h-3.5 w-3.5" />
-                </button>
             </nav>
 
             <!-- Actions droite : toggle + hamburger -->
