@@ -48,9 +48,9 @@ const navLinks = [
         <div class="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
             <NuxtLink
                 to="/"
-                class="font-mono text-lg font-bold tracking-tight"
+                class="font-mono uppercase text-lg font-bold tracking-tight"
             >
-                Opustic
+                Opustic<span class="text-brand-orange text-4xl">.</span>
             </NuxtLink>
 
             <!-- Nav complète (desktop, visible avant scroll) -->
@@ -111,8 +111,8 @@ const navLinks = [
                 <div
                     class="flex h-20 items-center justify-between border-b border-brand-light/10 px-6"
                 >
-                    <span class="font-mono text-lg font-bold tracking-tight"
-                        >Opustic</span
+                    <span class="font-mono uppercase text-lg font-bold tracking-tight"
+                        >Opustic<span class="text-brand-orange text-4xl">.</span></span
                     >
                         <button
                             type="button"

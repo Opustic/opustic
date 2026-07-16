@@ -6,4 +6,10 @@
 
     <LazyAccueilAbout />
 
+    <LazyAccueilProjets />
+
+    <LazyAccueilFaq />
+
+    <LazyContact />
+
 </template>

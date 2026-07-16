@@ -148,7 +148,7 @@ onUnmounted(() => {
                 <div 
                     v-if="isPlaying"
                     :key="currentIndex"
-                    class="absolute top-0 left-0 h-[2px] bg-brand-orange transition-all ease-linear"
+                    class="absolute top-0 left-0 h-0.5 bg-brand-orange transition-all ease-linear"
                     :style="{ width: '100%', transitionDuration: `${AUTOPLAY_TIME}ms` }"
                 />
 
@@ -177,7 +177,7 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Contenu du Cas d'Usage Actif -->
-                <div class="min-h-[160px] transition-all duration-500">
+                <div class="min-h-40 transition-all duration-500">
                     <span class="font-mono text-[10px] tracking-widest text-brand-orange uppercase">
                         {{ useCases[currentIndex].tag }}
                     </span>
