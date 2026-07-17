@@ -142,8 +142,7 @@ const navLinks = [
                 <div
                     class="flex flex-col gap-2 border-t border-brand-light/10 px-6 py-6 font-mono text-xs uppercase tracking-widest text-brand-light/50 sm:flex-row sm:items-center sm:justify-between"
                 >
-                    <span>© {{ new Date().getFullYear() }} — Serge</span>
-                    <span>hello@serge.dev</span>
+                    <span>© {{ new Date().getFullYear() }} — Opustic</span>
                 </div>
             </div>
         </Transition>

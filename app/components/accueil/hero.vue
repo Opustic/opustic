@@ -58,13 +58,7 @@ onMounted(() => {
   setTimeout(typeText, eraseDelay)
 })
 
-// --- 2. Specs standard ---
-const specs = [
-  { label: 'Stack', value: 'Python / Nuxt / n8n' }, // Stack tripartite cohésive
-  { label: 'Focus', value: 'Architecture & Efficacité' },
-  { label: 'Basé à', value: 'Pointe-Noire, CG' },
-  { label: 'Statut', value: 'Disponible' }
-]
+
 </script>
 
 <template>
@@ -117,15 +111,13 @@ const specs = [
         </NuxtLink>
       </div>
 
-      <!-- Grille de specs (directement intégrée pour la visibilité) -->
-      <div class="mt-16 border border-premium">
-        <div class="grid grid-cols-2 divide-x divide-y divide-premium sm:grid-cols-4 font-mono text-xs">
-          <div v-for="spec in specs" :key="spec.label" class="p-4 flex flex-col gap-1">
-            <span class="text-brand-dark/40 dark:text-brand-light/40 uppercase tracking-wider">{{ spec.label }}</span>
-            <span class="font-semibold text-brand-dark dark:text-brand-light">{{ spec.value }}</span>
-          </div>
+      <!-- Grille de specs -->
+
+        <div class="mt-10 border border-premium">
+
+            <LazyTechnologies />
+
         </div>
-      </div>
 
     </div>
 
