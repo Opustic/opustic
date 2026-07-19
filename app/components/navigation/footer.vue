@@ -1,4 +1,15 @@
 <script setup lang="ts">
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion-v'
+
+const prefersReduced = useReducedMotion()
+const wordmarkRef = ref<HTMLElement>()
+
+const { scrollYProgress: wordmarkProgress } = useScroll({
+  target: wordmarkRef,
+  offset: ['start end', 'end start'],
+})
+const wordmarkY = useTransform(wordmarkProgress, [0, 1], [40, -40])
+
 const navLinks = [
   { label: 'Accueil', to: '#' },
   { label: 'Projets', to: '#projets' },
@@ -60,17 +71,20 @@ function scrollToTop() {
     </UMarquee>
 
     <!-- Wordmark géant + grille animée en fond -->
-    <div class="relative border-b border-premium">
+    <div ref="wordmarkRef" class="relative border-b border-premium">
       <GridBg :cols="20" :rows="6" :step-duration="220" :fade-duration="1400" class="opacity-40" />
 
-      <div class="relative mx-auto max-w-6xl px-6 p-16">
+      <motion.div
+        :style="{ y: wordmarkY }"
+        class="relative mx-auto max-w-6xl px-6 p-16"
+      >
         <NuxtLink
           to="#"
           class="block select-none text-center font-sans text-[18vw] leading-none font-bold tracking-tighter text-transparent transition-colors duration-300 [-webkit-text-stroke:1px_var(--color-brand-dark)] hover:[-webkit-text-stroke:1px_var(--color-brand-orange)] dark:[-webkit-text-stroke:1px_var(--color-brand-light)] sm:text-[14vw]"
         >
           OPUSTIC
         </NuxtLink>
-      </div>
+      </motion.div>
     </div>
 
     <!-- Contenu principal -->
@@ -78,7 +92,12 @@ function scrollToTop() {
       <div class="grid grid-cols-1 gap-10 sm:grid-cols-3">
 
         <!-- Nav -->
-        <div>
+        <motion.div
+          :initial="{ opacity: 0, y: 16 }"
+          :whileInView="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-40px' }"
+          :transition="prefersReduced ? { duration: 0 } : { duration: 0.45 }"
+        >
           <p class="mb-4 font-mono text-[10px] uppercase tracking-widest text-brand-dark/40 dark:text-brand-light/40">
             Navigation
           </p>
@@ -92,10 +111,15 @@ function scrollToTop() {
               {{ link.label }}
             </NuxtLink>
           </nav>
-        </div>
+        </motion.div>
 
         <!-- Statut / horloge -->
-        <div>
+        <motion.div
+          :initial="{ opacity: 0, y: 16 }"
+          :whileInView="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-40px' }"
+          :transition="prefersReduced ? { duration: 0 } : { duration: 0.45, delay: 0.1 }"
+        >
           <p class="mb-4 font-mono text-[10px] uppercase tracking-widest text-brand-dark/40 dark:text-brand-light/40">
             Statut
           </p>
@@ -106,10 +130,16 @@ function scrollToTop() {
           <p class="mt-2 font-mono text-sm text-brand-dark/50 dark:text-brand-light/50">
             {{ localTime }} — Brazzaville, CG
           </p>
-        </div>
+        </motion.div>
 
         <!-- Back to top -->
-        <div class="flex items-start justify-start sm:justify-end">
+        <motion.div
+          :initial="{ opacity: 0, y: 16 }"
+          :whileInView="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-40px' }"
+          :transition="prefersReduced ? { duration: 0 } : { duration: 0.45, delay: 0.2 }"
+          class="flex items-start justify-start sm:justify-end"
+        >
           <button
             type="button"
             class="group flex items-center gap-3 border border-premium px-5 py-3 font-mono text-xs uppercase tracking-widest text-brand-dark transition-colors duration-200 hover:border-brand-orange hover:text-brand-orange dark:text-brand-light"
@@ -121,7 +151,7 @@ function scrollToTop() {
               class="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5"
             />
           </button>
-        </div>
+        </motion.div>
       </div>
 
       <!-- Ligne du bas -->

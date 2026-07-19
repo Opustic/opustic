@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { motion, useReducedMotion } from 'motion-v'
+
+const prefersReduced = useReducedMotion()
+
 interface ContactLink {
     label: string
     value: string
@@ -40,18 +44,36 @@ async function handleLinkClick(link: ContactLink, event: MouseEvent) {
         <div class="mx-auto max-w-6xl px-6 py-24">
 
             <!-- Header de section -->
-            <div class="mb-16 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60">
+            <motion.div
+                :initial="{ opacity: 0, x: -20 }"
+                :whileInView="{ opacity: 1, x: 0 }"
+                :viewport="{ once: true, margin: '-80px' }"
+                :transition="prefersReduced ? { duration: 0 } : { duration: 0.5 }"
+                class="mb-16 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60"
+            >
                 <span class="h-2 w-2 bg-brand-orange" />
                 Contact
-            </div>
+            </motion.div>
 
-            <h2 class="max-w-2xl text-4xl leading-tight font-semibold tracking-tight text-brand-dark dark:text-brand-light sm:text-5xl">
+            <motion.h2
+                :initial="{ opacity: 0, y: 20 }"
+                :whileInView="{ opacity: 1, y: 0 }"
+                :viewport="{ once: true, margin: '-80px' }"
+                :transition="prefersReduced ? { duration: 0 } : { duration: 0.5, delay: 0.1 }"
+                class="max-w-2xl text-4xl leading-tight font-semibold tracking-tight text-brand-dark dark:text-brand-light sm:text-5xl"
+            >
                 Un projet en tête ?
                 <span class="text-brand-dark/30 dark:text-brand-light/30">Discutons-en.</span>
-            </h2>
+            </motion.h2>
 
             <!-- Grille de contacts (4 carrés collés) -->
-            <div class="mt-4 grid grid-cols-2 border-t border-l border-premium sm:grid-cols-4"> 
+            <motion.div
+                :initial="{ opacity: 0, y: 24 }"
+                :whileInView="{ opacity: 1, y: 0 }"
+                :viewport="{ once: true, margin: '-60px' }"
+                :transition="prefersReduced ? { duration: 0 } : { duration: 0.5, delay: 0.2 }"
+                class="mt-4 grid grid-cols-2 border-t border-l border-premium sm:grid-cols-4"
+            >
                 <a
                     v-for="link in links"
                     :key="link.label"
@@ -81,7 +103,7 @@ async function handleLinkClick(link: ContactLink, event: MouseEvent) {
                         {{ copiedLabel === link.label ? 'Copié' : 'Copier' }}
                     </span>
                 </a>
-            </div>
+            </motion.div>
         </div>
     </section>
 </template>

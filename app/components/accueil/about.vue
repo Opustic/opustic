@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion-v'
+
+const prefersReduced = useReducedMotion()
+const sectionRef = ref<HTMLElement>()
+
+const { scrollYProgress } = useScroll({
+  target: sectionRef,
+  offset: ['start end', 'end start'],
+})
+const parallaxY = useTransform(scrollYProgress, [0, 1], [60, -60])
 
 const milestones = [
     {
@@ -94,18 +104,33 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section id="about" class="border-b border-premium">
+    <section ref="sectionRef" id="about" class="border-b border-premium">
         <div class="mx-auto max-w-6xl px-6 py-24">
 
             <!-- Header de section -->
-            <div class="mb-16 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60">
+            <motion.div
+                :initial="{ opacity: 0, x: -20 }"
+                :whileInView="{ opacity: 1, x: 0 }"
+                :viewport="{ once: true, margin: '-80px' }"
+                :transition="prefersReduced ? { duration: 0 } : { duration: 0.5 }"
+                class="mb-16 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60"
+            >
                 <span class="h-2 w-2 bg-brand-orange" />
                 À propos
-            </div>
+            </motion.div>
 
             <!-- Introduction Narrative -->
-            <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 mb-20">
-                <div class="lg:col-span-8">
+            <motion.div
+                :style="{ y: parallaxY }"
+                class="grid grid-cols-1 gap-12 lg:grid-cols-12 mb-20"
+            >
+                <motion.div
+                    class="lg:col-span-8"
+                    :initial="{ opacity: 0, y: 30 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :viewport="{ once: true, margin: '-80px' }"
+                    :transition="prefersReduced ? { duration: 0 } : { duration: 0.6, ease: 'easeOut' }"
+                >
                     <p class="text-2xl leading-snug font-medium tracking-tight text-brand-dark dark:text-brand-light sm:text-3xl lg:text-4xl">
                         Je ne vends pas de théories abstraites : 
                         <span class="text-brand-orange">je build des systèmes qui marchent.</span>
@@ -114,20 +139,30 @@ onUnmounted(() => {
                         </span>
                         je crée des outils robustes, pensés pour la performance et adaptés aux réalités du terrain.
                     </p>
-                </div>
+                </motion.div>
 
-                <div class="lg:col-span-4 flex flex-col justify-end">
+                <motion.div
+                    class="lg:col-span-4 flex flex-col justify-end"
+                    :initial="{ opacity: 0, y: 30 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :viewport="{ once: true, margin: '-80px' }"
+                    :transition="prefersReduced ? { duration: 0 } : { duration: 0.6, delay: 0.15, ease: 'easeOut' }"
+                >
                     <p class="font-sans text-sm text-brand-dark/60 dark:text-brand-light/60">
                         Basé à Brazzaville, je développe sous ma propre marque, <strong class="text-brand-orange">Opustic</strong>. J'aide les entreprises et créateurs à automatiser leurs processus et à déployer des plateformes modernes et rapides.
                     </p>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
 
             <!-- Les 3 Facettes (Piliers) -->
             <div class="grid grid-cols-1 border-t border-l border-premium sm:grid-cols-3 mb-16">
-                <div
-                    v-for="milestone in milestones"
+                <motion.div
+                    v-for="(milestone, i) in milestones"
                     :key="milestone.index"
+                    :initial="{ opacity: 0, y: 24 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :viewport="{ once: true, margin: '-60px' }"
+                    :transition="prefersReduced ? { duration: 0 } : { duration: 0.45, delay: i * 0.12, ease: 'easeOut' }"
                     class="border-r border-b border-premium p-6"
                 >
                     <span class="font-mono text-xs text-brand-orange">{{ milestone.index }}</span>
@@ -138,11 +173,17 @@ onUnmounted(() => {
                     <p class="mt-2 font-sans text-sm text-brand-dark/60 dark:text-brand-light/60">
                         {{ milestone.description }}
                     </p>
-                </div>
+                </motion.div>
             </div>
 
             <!-- Carrousel des Cas d'Usage (W-FULL & COULEUR ACCENTUÉE ORANGE) -->
-            <div class="w-full border border-brand-orange/40 rounded-none p-8 relative overflow-hidden shadow-[0_0_30px_rgba(255,102,0,0.04)]">
+            <motion.div
+                :initial="{ opacity: 0, y: 30 }"
+                :whileInView="{ opacity: 1, y: 0 }"
+                :viewport="{ once: true, margin: '-80px' }"
+                :transition="prefersReduced ? { duration: 0 } : { duration: 0.5, ease: 'easeOut' }"
+                class="w-full border border-brand-orange/40 rounded-none p-8 relative overflow-hidden shadow-[0_0_30px_rgba(255,102,0,0.04)]"
+            >
                 
                 <!-- Ligne de chargement (Animation de progression) -->
                 <div 
@@ -201,7 +242,7 @@ onUnmounted(() => {
                     </div>
                 </div>
 
-            </div>
+            </motion.div>
 
         </div>
     </section>

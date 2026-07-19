@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { motion, useReducedMotion } from 'motion-v'
+
+const prefersReduced = useReducedMotion()
+
 const { data: projects } = await useAsyncData('projects-list', () =>
     queryCollection('projects').order('year', 'DESC').all()
 )
@@ -17,16 +21,26 @@ function closeProject() {
     <section id="projects" class="border-b border-premium">
         <div class="mx-auto max-w-6xl px-6 py-24">
 
-            <div class="mb-16 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60">
+            <motion.div
+                :initial="{ opacity: 0, x: -20 }"
+                :whileInView="{ opacity: 1, x: 0 }"
+                :viewport="{ once: true, margin: '-80px' }"
+                :transition="prefersReduced ? { duration: 0 } : { duration: 0.5 }"
+                class="mb-16 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60"
+            >
                 <span class="h-2 w-2 bg-brand-orange" />
                 Projets réalisés
-            </div>
+            </motion.div>
 
             <div v-if="projects?.length" class="grid grid-cols-1 border-t border-l border-premium sm:grid-cols-2">
-                <button
+                <motion.button
                     v-for="(project, i) in projects"
                     :key="project.path"
                     type="button"
+                    :initial="{ opacity: 0, y: 24 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :viewport="{ once: true, margin: '-60px' }"
+                    :transition="prefersReduced ? { duration: 0 } : { duration: 0.45, delay: i * 0.08, ease: 'easeOut' }"
                     class="relative group flex flex-col justify-between border-r border-b border-premium p-8 text-left transition-colors duration-200 hover:bg-brand-dark/[0.02] dark:hover:bg-brand-light/[0.02]"
                     @click="openProject(project.path)"
                 >
@@ -70,7 +84,7 @@ function closeProject() {
                             class="ml-auto h-4 w-4 text-brand-dark/30 transition-colors duration-200 group-hover:text-brand-orange dark:text-brand-light/30"
                         />
                     </div>
-                </button>
+                </motion.button>
             </div>
 
             <p v-else class="font-mono text-sm text-brand-dark/40 dark:text-brand-light/40">

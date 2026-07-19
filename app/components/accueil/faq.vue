@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { motion, useReducedMotion } from 'motion-v'
+
+const prefersReduced = useReducedMotion()
+
 interface FaqItem {
   question: string
   answer: string
@@ -43,21 +47,37 @@ function toggle(index: number) {
     <div class="mx-auto max-w-6xl px-6 py-24">
 
       <!-- Header de section -->
-      <div class="mb-16 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60">
-        <span class="h-2 w-2 bg-brand-orange" />
-        FAQ
-      </div>
+      <motion.div
+          :initial="{ opacity: 0, x: -20 }"
+          :whileInView="{ opacity: 1, x: 0 }"
+          :viewport="{ once: true, margin: '-80px' }"
+          :transition="prefersReduced ? { duration: 0 } : { duration: 0.5 }"
+          class="mb-16 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60"
+      >
+          <span class="h-2 w-2 bg-brand-orange" />
+          FAQ
+      </motion.div>
 
-      <h2 class="max-w-2xl text-4xl leading-tight font-semibold tracking-tight text-brand-dark dark:text-brand-light sm:text-5xl">
-        Questions
-        <span class="text-brand-dark/30 dark:text-brand-light/30">fréquentes.</span>
-      </h2>
+      <motion.h2
+          :initial="{ opacity: 0, y: 20 }"
+          :whileInView="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-80px' }"
+          :transition="prefersReduced ? { duration: 0 } : { duration: 0.5, delay: 0.1 }"
+          class="max-w-2xl text-4xl leading-tight font-semibold tracking-tight text-brand-dark dark:text-brand-light sm:text-5xl"
+      >
+          Questions
+          <span class="text-brand-dark/30 dark:text-brand-light/30">fréquentes.</span>
+      </motion.h2>
 
       <!-- Liste accordéon -->
       <div class="mt-16 border-t border-premium">
-        <div
+        <motion.div
           v-for="(faq, index) in faqs"
           :key="faq.question"
+          :initial="{ opacity: 0, x: -16 }"
+          :whileInView="{ opacity: 1, x: 0 }"
+          :viewport="{ once: true, margin: '-40px' }"
+          :transition="prefersReduced ? { duration: 0 } : { duration: 0.4, delay: index * 0.08, ease: 'easeOut' }"
           class="border-b border-premium px-4"
         >
           <button
@@ -91,7 +111,7 @@ function toggle(index: number) {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
     </div>
