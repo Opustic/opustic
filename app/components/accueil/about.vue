@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { motion, useScroll, useTransform, useReducedMotion } from 'motion-v'
+import { motion, useScroll, useTransform, useReducedMotion, AnimatePresence } from 'motion-v'
 
 const prefersReduced = useReducedMotion()
 const sectionRef = ref<HTMLElement>()
 
 const { scrollYProgress } = useScroll({
-  target: sectionRef,
-  offset: ['start end', 'end start'],
+    target: sectionRef,
+    offset: ['start end', 'end start'],
 })
 const parallaxY = useTransform(scrollYProgress, [0, 1], [60, -60])
 
@@ -56,6 +56,25 @@ const useCases = [
         solution: 'Centralisation automatique des données dans une base PostgreSQL et conception d\'un tableau de bord interactif offrant une vue consolidée de vos KPI en temps réel.'
     }
 ]
+
+// Fenêtre glissante des 3 prochaines cartes visibles
+const stackItems = computed(() => {
+    const size = Math.min(3, useCases.length)
+    return Array.from({ length: size }, (_, i) => {
+        const idx = (currentIndex.value + i) % useCases.length
+        return { ...useCases[idx], id: useCases[idx].title, slot: i }
+    })
+})
+
+const SLOT_STYLES = [
+    { y: 0, scale: 1, opacity: 1, rotate: 0, zIndex: 30 },
+    { y: 18, scale: 0.94, opacity: 0.5, rotate: -2, zIndex: 20 },
+    { y: 32, scale: 0.88, opacity: 0.25, rotate: 2, zIndex: 10 }
+]
+
+function slotStyle(slot: number) {
+    return SLOT_STYLES[slot] ?? SLOT_STYLES[SLOT_STYLES.length - 1]
+}
 
 const currentIndex = ref(0)
 const isPlaying = ref(true)
@@ -175,73 +194,76 @@ onUnmounted(() => {
                 </motion.div>
             </div>
 
-            <!-- Carrousel des Cas d'Usage (W-FULL & COULEUR ACCENTUÉE ORANGE) -->
-            <motion.div
-                :initial="{ opacity: 0, y: 30 }"
-                :whileInView="{ opacity: 1, y: 0 }"
-                :viewport="{ once: true, margin: '-80px' }"
-                :transition="prefersReduced ? { duration: 0 } : { duration: 0.5, ease: 'easeOut' }"
-                class="w-full border border-brand-orange/40 rounded-none p-8 relative overflow-hidden shadow-[0_0_30px_rgba(255,102,0,0.04)]"
-            >
-                
-                <!-- Ligne de chargement (Animation de progression) -->
-                <div 
-                    v-if="isPlaying"
-                    :key="currentIndex"
-                    class="absolute top-0 left-0 h-0.5 bg-brand-orange transition-all ease-linear"
-                    :style="{ width: '100%', transitionDuration: `${AUTOPLAY_TIME}ms` }"
-                />
+            <!-- Carrousel des Cas d'Usage (Structure corrigée) -->
+            <div class="w-full">
 
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+                <!-- 1. En-tête + Contrôles (Isolés au-dessus de la pile de cartes) -->
+                <div class="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                     <div class="flex items-center gap-3">
-                        <span class="font-mono text-xs bg-brand-orange/10 text-brand-orange px-2.5 py-1 rounded border border-brand-orange/20 tracking-wider">
+                        <span class="border border-brand-orange/20 bg-brand-orange/10 px-2.5 py-1 font-mono text-xs tracking-wider text-brand-orange">
                             CAS CONCRET
                         </span>
                         <span class="font-mono text-xs text-brand-dark/50 dark:text-brand-light/50">
-                        // 0{{ currentIndex + 1 }} sur 0{{ useCases.length }}
+                            // 0{{ currentIndex + 1 }} sur 0{{ useCases.length }}
                         </span>
                     </div>
-                    
-                    <!-- Contrôles du Carrousel -->
+
                     <div class="flex items-center gap-2 font-mono text-xs">
-                        <button @click="prevSlide" class="flex items-center justify-center p-2 border border-premium hover:border-brand-orange rounded-none text-brand-dark dark:text-brand-light hover:text-brand-orange transition-colors">
+                        <button type="button" class="flex h-9 w-9 items-center justify-center border border-premium text-brand-dark transition-colors hover:border-brand-orange hover:text-brand-orange dark:text-brand-light" @click="prevSlide">
                             <UIcon name="lucide:chevrons-left" class="h-4 w-4" />
                         </button>
-                        <button @click="togglePlay" class="flex items-center justify-center px-3 py-2 border border-premium hover:border-brand-orange rounded-none text-brand-dark dark:text-brand-light hover:text-brand-orange transition-colors">
+                        <button type="button" class="flex h-9 px-3 items-center justify-center border border-premium text-brand-dark transition-colors hover:border-brand-orange hover:text-brand-orange dark:text-brand-light" @click="togglePlay">
                             <UIcon :name="isPlaying ? 'lucide:pause' : 'lucide:play'" class="h-4 w-4" />
                         </button>
-                        <button @click="nextSlide" class="flex items-center justify-center p-2 border border-premium hover:border-brand-orange rounded-none text-brand-dark dark:text-brand-light hover:text-brand-orange transition-colors">
+                        <button type="button" class="flex h-9 w-9 items-center justify-center border border-premium text-brand-dark transition-colors hover:border-brand-orange hover:text-brand-orange dark:text-brand-light" @click="nextSlide">
                             <UIcon name="lucide:chevrons-right" class="h-4 w-4" />
                         </button>
                     </div>
                 </div>
 
-                <!-- Contenu du Cas d'Usage Actif -->
-                <div class="min-h-40 transition-all duration-500">
-                    <span class="font-mono text-[10px] tracking-widest text-brand-orange uppercase">
-                        {{ useCases[currentIndex].tag }}
-                    </span>
-                    <h4 class="text-xl md:text-2xl font-bold text-brand-dark dark:text-brand-light mt-1">
-                        {{ useCases[currentIndex].title }}
-                    </h4>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 p-6 border-t border-premium">
-                        <div>
-                            <span class="font-mono text-[10px] text-brand-dark/40 dark:text-brand-light/40 uppercase block mb-1">Le Problème</span>
-                            <p class="text-sm text-brand-dark/70 dark:text-brand-light/70">
-                                {{ useCases[currentIndex].problem }}
-                            </p>
-                        </div>
-                        <div>
-                            <span class="font-mono text-[10px] text-brand-orange/60 uppercase block mb-1">La Solution Opustic</span>
-                            <p class="text-sm text-brand-dark/90 dark:text-brand-light/95 font-medium">
-                                {{ useCases[currentIndex].solution }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <!-- 2. Zone de la pile de cartes (Hauteur accrue sur mobile pour contenir le texte) -->
+                <div class="relative min-h-[480px] sm:min-h-[320px] lg:min-h-[280px]">
+                    <AnimatePresence>
+                        <motion.div
+                            v-for="card in stackItems"
+                            :key="card.id"
+                            :initial="{ y: 40, scale: 0.8, opacity: 0, rotate: 2 }"
+                            :animate="{
+                                y: slotStyle(card.slot).y,
+                                scale: slotStyle(card.slot).scale,
+                                opacity: slotStyle(card.slot).opacity,
+                                rotate: slotStyle(card.slot).rotate
+                            }"
+                            :exit="{ y: -40, scale: 0.9, opacity: 0, rotate: -3 }"
+                            :transition="{ type: 'spring', stiffness: 300, damping: 28 }"
+                            class="absolute inset-0 flex flex-col gap-6 border border-brand-orange/30 bg-brand-light p-5 sm:p-8 shadow-[0_4px_30px_rgba(255,102,0,0.02)] dark:bg-brand-dark-soft"
+                            :style="{ zIndex: slotStyle(card.slot).zIndex, pointerEvents: card.slot === 0 ? 'auto' : 'none' }"
+                        >
+                            <!-- Contenu supérieur de la carte -->
+                            <div>
+                                <span class="mb-1.5 block font-mono text-[10px] uppercase tracking-widest text-brand-orange">
+                                    {{ card.tag }}
+                                </span>
+                                <h4 class="text-lg leading-tight font-bold text-brand-dark sm:text-xl md:text-2xl dark:text-brand-light">
+                                    {{ card.title }}
+                                </h4>
+                            </div>
 
-            </motion.div>
+                            <!-- Grille Problème / Solution -->
+                            <div class="grid grid-cols-1 gap-4 border-t border-premium p-4 md:grid-cols-2 md:gap-6">
+                                <div>
+                                    <span class="mb-1 block font-mono text-[10px] text-brand-dark/40 uppercase dark:text-brand-light/40">Le Problème</span>
+                                    <p class="text-xs leading-relaxed text-brand-dark/70 sm:text-sm dark:text-brand-light/70">{{ card.problem }}</p>
+                                </div>
+                                <div>
+                                    <span class="mb-1 block font-mono text-[10px] text-brand-orange/70 uppercase">La Solution</span>
+                                    <p class="text-xs leading-relaxed font-medium text-brand-dark/90 sm:text-sm dark:text-brand-light/95">{{ card.solution }}</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+            </div>
 
         </div>
     </section>
