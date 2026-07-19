@@ -17,11 +17,6 @@ const stack = ['NUXT', 'FASTAPI', 'N8N']
             style="position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 80px), repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 80px);"
         />
 
-        <!-- Lueur orange derrière le titre -->
-        <div
-            style="position: absolute; top: 320px; left: 180px; width: 520px; height: 260px; background: radial-gradient(circle, rgba(255,102,0,0.18) 0%, rgba(255,102,0,0) 70%);"
-        />
-
         <!-- Repères d'angle (haut-gauche / bas-droite) -->
         <div style="position: absolute; top: 40px; left: 40px; width: 28px; height: 28px; border-top: 2px solid #ff6600; border-left: 2px solid #ff6600;" />
         <div style="position: absolute; bottom: 40px; right: 40px; width: 28px; height: 28px; border-bottom: 2px solid #ff6600; border-right: 2px solid #ff6600;" />
