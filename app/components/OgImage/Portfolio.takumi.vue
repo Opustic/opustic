@@ -58,7 +58,6 @@ const stack = ['NUXT', 'FASTAPI', 'N8N']
             style="position: relative; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-family: 'JetBrains Mono', monospace; font-size: 18px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4);"
         >
             <span>Brazzaville, Congo</span>
-            <span style="color: #ff6600; font-weight: 600;">serge.dev</span>
         </div>
     </div>
 </template>

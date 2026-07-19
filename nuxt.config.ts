@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
 
   site: {
-    url: "https://ton-domaine.com",
+    url: "https://opustic.vercel.app",
     name: "Serge GUIMBI — Développeur Full-Stack",
     description: "Développeur Full-Stack, Data Analyst et automatisation n8n.",
     defaultLocale: "fr",
