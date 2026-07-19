@@ -9,7 +9,7 @@ const techs: Tech[] = [
     { name: 'Nuxt.js', logo: '/images/logos/nuxt.png' },
     { name: 'Tailwind CSS', logo: '/images/logos/tailwind.png' },
     { name: 'Python', logo: '/images/logos/python.png' },
-    { name: 'R', logo: '/images/logos/R.png' },
+    { name: 'R', logo: '/images/logos/r.png' },
     { name: 'JavaScript', logo: '/images/logos/javascript.png' },
     { name: 'n8n', logo: '/images/logos/n8n.png' },
     { name: 'Docker', logo: '/images/logos/docker.png' },

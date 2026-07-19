@@ -21,7 +21,7 @@ const navLinks = [
 const taglineItems = [
   'Disponible pour de nouveaux projets',
   'Basé à Brazzaville, Congo',
-  'Toujours en train de débugger quelque chose'
+  'Conçu à Brazzaville, déployé partout'
 ]
 
 // Horloge locale live

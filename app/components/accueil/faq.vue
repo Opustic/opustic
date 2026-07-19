@@ -11,27 +11,27 @@ interface FaqItem {
 const faqs: FaqItem[] = [
   {
     question: 'Quel type de projets acceptez-vous ?',
-    answer: 'Applications web sur-mesure, plateformes SaaS, automatisation de workflows et missions d\'analyse de données. Je travaille aussi bien sur des projets complets de A à Z que sur des interventions ponctuelles.'
+    answer: 'Applications web sur-mesure, plateformes SaaS, automatisation de workflows et missions d\'analyse de données. Je travaille aussi bien sur des projets complets de A à Z que sur des missions ponctuelles.'
   },
   {
     question: 'Quel est votre délai moyen pour un projet ?',
-    answer: 'Ça dépend de la portée — un MVP simple peut prendre 2 à 4 semaines, une plateforme complète plusieurs mois. Je donne une estimation précise après un premier échange sur le besoin.'
+    answer: 'La durée dépend de la portée du projet — un produit minimum viable peut être livré en 2 à 4 semaines, tandis qu\'une plateforme complète nécessite plusieurs mois. Une estimation précise est communiquée après l\'analyse du besoin.'
   },
   {
     question: 'Travaillez-vous en remote ?',
-    answer: 'Oui, exclusivement en remote. Je suis basé à Pointe-Noire et je collabore avec des clients à distance, avec des points réguliers selon le fuseau horaire du projet.'
+    answer: 'Je travaille exclusivement à distance. Basé à Brazzaville, je collabore avec des clients internationaux, avec des points de suivi réguliers adaptés à votre fuseau horaire.'
   },
   {
     question: 'Quelles technologies utilisez-vous principalement ?',
-    answer: 'Nuxt/Vue et FastAPI pour le développement web, PostgreSQL pour les données, n8n pour l\'automatisation. Le choix final dépend toujours des contraintes spécifiques du projet.'
+    answer: 'Nuxt/Vue et FastAPI pour le développement web, PostgreSQL pour la gestion de données, n8n pour l\'automatisation. Le choix technologique final est toujours dicté par les contraintes et les objectifs du projet.'
   },
   {
     question: 'Proposez-vous de la maintenance après livraison ?',
-    answer: 'Oui, sous forme de forfait mensuel ou d\'interventions ponctuelles selon vos besoins. On en discute généralement vers la fin du projet, une fois le périmètre de maintenance plus clair.'
+    answer: 'Oui, je propose un suivi post-livraison sous forme de forfait mensuel ou d\'interventions ponctuelles. Le périmètre de maintenance est défini en fin de projet.'
   },
   {
     question: 'Comment se déroule le paiement ?',
-    answer: 'Généralement en plusieurs jalons — un acompte au démarrage, puis des paiements liés à l\'avancement. Les modalités exactes sont définies ensemble avant le début du projet.'
+    answer: 'Le règlement s\'effectue généralement par jalons — acompte au démarrage, puis paiements liés à l\'avancement des livrables. Les modalités sont validées en amont du projet.'
   }
 ]
 

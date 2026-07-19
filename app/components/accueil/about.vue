@@ -15,17 +15,17 @@ const milestones = [
     {
         index: '01',
         title: 'Data & Statistiques',
-        description: 'Analyse et extraction de données. Je passe de la donnée brute ou du scraping (Scrapy/Python) à des insights clairs ou des bases de données PostgreSQL bien structurées.'
+        description: 'Collecte, traitement et valorisation de données. De la donnée brute — qu\'elle provienne de scraping ou de sources internes — à des analyses exploitables et des bases de données PostgreSQL structurées.'
     },
     {
         index: '02',
         title: 'Développement Full-Stack',
-        description: 'Conception d\'applications web complètes, rapides et optimisées pour le SEO en utilisant Nuxt 3 et Tailwind CSS côté client, et FastAPI côté serveur.'
+        description: 'Conception d\'applications web complètes et performantes. Stack moderne (Nuxt, Tailwind CSS, FastAPI) au service de la vitesse, de l\'accessibilité et du référencement naturel.'
     },
     {
         index: '03',
         title: 'Automation & Local AI',
-        description: 'Connexion de workflows avec n8n (Google Sheets, Telegram, CRM) et intégration de modèles d\'IA locaux via Ollama pour automatiser des tâches sans surcoût.'
+        description: 'Orchestration de workflows et intégration d\'IA locale. Connexion de vos outils métier (CRM, tableurs, messagerie) via n8n, avec des modèles de langage déployés en local pour maîtriser coûts et confidentialité.'
     }
 ]
 
@@ -33,27 +33,27 @@ const milestones = [
 const useCases = [
     {
         tag: 'DATA + AUTOMATION',
-        title: 'Scraping de leads & Enrichissement CRM',
-        problem: 'Vous passez des heures à chercher des prospects sur le web et recopier leurs infos.',
-        solution: 'Un robot Scrapy extrait les profils ciblés, un script Python nettoie les données, et n8n les injecte automatiquement dans votre CRM ou Google Sheets avec une alerte Telegram.'
+        title: 'Collecte automatisée de données & Enrichissement CRM',
+        problem: 'La prospection commerciale manuelle mobilise des ressources considérables — recherche de profils, extraction d\'informations, saisie dans le CRM.',
+        solution: 'Un pipeline Scrapy extrait et normalise les profils ciblés. Un script Python traite et nettoie les données, puis n8n les injecte automatiquement dans votre CRM avec notification Telegram.'
     },
     {
         tag: 'DEVELOPPEMENT WEB',
-        title: 'Plateforme e-commerce ultra-rapide (Offline-Ready)',
-        problem: 'Vos clients abandonnent leur panier parce que votre site rame sur une connexion mobile 3G/4G locale.',
-        solution: 'Un site e-commerce développé avec Nuxt 3 (génération statique) couplé à une base locale SQLite/PostgreSQL. Le site s\'ouvre instantanément même avec un faible débit.'
+        title: 'Plateforme e-commerce haute performance',
+        problem: 'Les temps de chargement élevés sur les connexions mobiles à faible débit impactent directement le taux de conversion.',
+        solution: 'Application e-commerce en génération statique (Nuxt) couplée à une base de données locale (SQLite/PostgreSQL). Résultat : temps de chargement quasi-instantané, même sur réseau limité.'
     },
     {
         tag: 'AUTOMATION + IA',
-        title: 'Support client autonome par WhatsApp/Telegram',
-        problem: 'Votre service client est débordé par les mêmes questions répétitives (tarifs, horaires, dispos).',
-        solution: 'Un chatbot intelligent connecté à l\'API WhatsApp, orchestré par n8n, qui répond 24h/24 en s\'appuyant sur vos documents internes ou un LLM local (Ollama) pour zéro coût d\'API.'
+        title: 'Assistant client intelligent multicanal',
+        problem: 'Le service client est sollicité en permanence pour des questions récurrentes — tarifs, disponibilités, informations pratiques — au détriment des demandes à forte valeur ajoutée.',
+        solution: 'Un chatbot conversationnel, accessible via WhatsApp et Telegram, orchestré par n8n. Il s\'appuie sur votre base documentaire ou un modèle de langage local (Ollama) pour répondre en continu, sans coût d\'API externe.'
     },
     {
         tag: 'DATA VISUALIZATION',
-        title: 'Dashboard de pilotage pour commerces ou agences',
-        problem: 'Vos données de ventes, stocks et dépenses sont éparpillées sur plusieurs fichiers Excel.',
-        solution: 'Centralisation automatique de vos fichiers dans une base de données PostgreSQL et création d\'un tableau de bord épuré pour suivre vos indicateurs clés de performance en temps réel.'
+        title: 'Tableau de bord décisionnel',
+        problem: 'Les indicateurs de performance sont dispersés entre plusieurs sources — fichiers Excel, outils de caisse, relevés bancaires — rendant le pilotage fastidieux.',
+        solution: 'Centralisation automatique des données dans une base PostgreSQL et conception d\'un tableau de bord interactif offrant une vue consolidée de vos KPI en temps réel.'
     }
 ]
 
@@ -132,12 +132,11 @@ onUnmounted(() => {
                     :transition="prefersReduced ? { duration: 0 } : { duration: 0.6, ease: 'easeOut' }"
                 >
                     <p class="text-2xl leading-snug font-medium tracking-tight text-brand-dark dark:text-brand-light sm:text-3xl lg:text-4xl">
-                        Je ne vends pas de théories abstraites : 
-                        <span class="text-brand-orange">je build des systèmes qui marchent.</span>
+                        <span class="text-brand-orange">Chaque solution que je développe est conçue pour répondre à un besoin concret.</span>
                         <span class="text-brand-dark/40 dark:text-brand-light/40">
-                            Que ce soit pour analyser des données, déployer une application ou automatiser des tâches répétitives,
+                            Analyser des données, déployer une plateforme ou automatiser des processus critiques —
                         </span>
-                        je crée des outils robustes, pensés pour la performance et adaptés aux réalités du terrain.
+                        des outils robustes, pensés pour la performance et alignés sur vos objectifs.
                     </p>
                 </motion.div>
 
@@ -149,7 +148,7 @@ onUnmounted(() => {
                     :transition="prefersReduced ? { duration: 0 } : { duration: 0.6, delay: 0.15, ease: 'easeOut' }"
                 >
                     <p class="font-sans text-sm text-brand-dark/60 dark:text-brand-light/60">
-                        Basé à Brazzaville, je développe sous ma propre marque, <strong class="text-brand-orange">Opustic</strong>. J'aide les entreprises et créateurs à automatiser leurs processus et à déployer des plateformes modernes et rapides.
+                        J'accompagne entreprises et professionnels dans l'automatisation de leurs processus et le déploiement de plateformes digitales performantes.
                     </p>
                 </motion.div>
             </motion.div>

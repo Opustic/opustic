@@ -94,7 +94,7 @@ onMounted(() => {
 
       <!-- Description courte clarifiée -->
       <p class="mt-8 max-w-2xl font-sans text-base text-brand-dark/70 dark:text-brand-light/70 sm:text-lg leading-relaxed">
-        Je conçois des architectures sur-mesure, de la modélisation de vos données à la création d'interfaces fluides, en passant par l'automatisation complète de vos processus métiers.
+        Je conçois des architectures digitales sur-mesure — de la modélisation de vos données à la conception d'interfaces performantes, en passant par l'automatisation intégrale de vos processus métier.
       </p>
 
       <!-- CTA -->
