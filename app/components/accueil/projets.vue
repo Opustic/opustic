@@ -19,7 +19,7 @@ function closeProject() {
 
             <div class="mb-16 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60">
                 <span class="h-2 w-2 bg-brand-orange" />
-                Projets
+                Projets réalisés
             </div>
 
             <div v-if="projects?.length" class="grid grid-cols-1 border-t border-l border-premium sm:grid-cols-2">
@@ -27,10 +27,20 @@ function closeProject() {
                     v-for="(project, i) in projects"
                     :key="project.path"
                     type="button"
-                    class="group flex flex-col justify-between border-r border-b border-premium p-8 text-left transition-colors duration-200 hover:bg-brand-dark/[0.02] dark:hover:bg-brand-light/[0.02]"
+                    class="relative group flex flex-col justify-between border-r border-b border-premium p-8 text-left transition-colors duration-200 hover:bg-brand-dark/[0.02] dark:hover:bg-brand-light/[0.02]"
                     @click="openProject(project.path)"
                 >
                     <div>
+
+                        <LazyGridBg
+                            :cols="16"
+                            :rows="10"
+                            :step-duration="220"
+                            :fade-duration="1400"
+                            class="opacity-30"
+                        />
+
+
                         <div class="flex items-center justify-between">
                             <span class="font-mono text-xs text-brand-orange">{{ String(i + 1).padStart(2, '0') }}</span>
                             <span class="font-mono text-[10px] uppercase tracking-widest text-brand-dark/40 dark:text-brand-light/40">
