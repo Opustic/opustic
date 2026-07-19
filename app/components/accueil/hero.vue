@@ -77,7 +77,7 @@ onMounted(() => {
       <!-- Bandeau statut -->
       <div class="mb-8 flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-brand-dark/60 dark:text-brand-light/60">
         <span class="h-2 w-2 bg-brand-orange" />
-        Disponible pour des projets complexes
+        Disponible pour de nouveaux projets
         <span class="text-brand-dark/30 dark:text-brand-light/30">— 2026</span>
       </div>
 
